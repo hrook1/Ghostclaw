@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+**/.env
+*.env
+.env.local
+**/.env.local
+
+# Build artifacts
+target/
+out/
+cache/
+broadcast/
+
+# Rust
+*.elf
+*.log
+Cargo.lock
+
+# Mac
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Next.js
+.next/
+
+# Claude settings (may contain sensitive command allowlists)
+.claude/settings.local.json
+
+# Test scripts with hardcoded keys (keep for local dev only)
+scripts/test-sepolia.js
+scripts/decrypt-utxo.js
+scripts/test-rust-utxo.js
+relayer/test-relayer.js
+prover/host/verify_address.sh
+
+# Vercel
+.vercel/
+.vercel
+.env*.local
+
+# Hackathon cleanup - don't re-add
+wallet-ui/
+contracts/broadcast/
+*.backup
+build_output.txt
+
+# Debug scripts
+check_*.js
+debug_*.js
+trace_*.js
+*_export

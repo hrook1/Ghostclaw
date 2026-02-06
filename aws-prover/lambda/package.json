@@ -1,0 +1,12 @@
+{
+  "name": "sp1-prover-lambda",
+  "version": "1.0.0",
+  "description": "Lambda function for on-demand SP1 proof generation",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.0.0",
+    "@aws-sdk/client-ec2": "^3.0.0",
+    "@aws-sdk/client-s3": "^3.0.0",
+    "@aws-sdk/lib-dynamodb": "^3.0.0"
+  }
+}

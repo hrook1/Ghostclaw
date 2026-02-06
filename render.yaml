@@ -1,0 +1,45 @@
+# Render Blueprint for Private UTXO Ledger
+# Deploy both services with: render blueprint apply
+
+services:
+  # Relayer Server (gasless transactions via Alchemy)
+  - type: web
+    name: utxo-relayer
+    runtime: node
+    rootDir: relayer
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 3002
+      - key: SEPOLIA_RPC_URL
+        sync: false  # Set manually in Render dashboard
+      - key: RELAYER_PRIVATE_KEY
+        sync: false
+      - key: CONTRACT_ADDRESS
+        value: "0xF3Ac04b13dfb9D879c00Bd9F5924f80C7DB58AD0"
+      - key: ALCHEMY_API_KEY
+        sync: false
+      - key: GAS_POLICY_ID
+        sync: false
+    healthCheckPath: /api/health
+
+  # Prover Server (Succinct Network)
+  - type: web
+    name: utxo-prover
+    runtime: docker
+    rootDir: .
+    dockerfilePath: prover-server/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: SP1_PROVER
+        value: network
+      - key: PROVER_NETWORK_RPC
+        value: "https://rpc.mainnet.succinct.xyz"
+      - key: NETWORK_PRIVATE_KEY
+        sync: false  # Set manually - Succinct network wallet
+      - key: LEDGER_CONTRACT
+        value: "0xF3Ac04b13dfb9D879c00Bd9F5924f80C7DB58AD0"
+    healthCheckPath: /api/health

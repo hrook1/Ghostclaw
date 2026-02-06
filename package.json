@@ -1,0 +1,23 @@
+{
+  "scripts": {
+    "test:e2e:api": "cd tests/e2e && npm test",
+    "test:e2e:api:aws": "cd tests/e2e && PROVER_SERVER=http://13.218.98.69:3001 RELAYER_SERVER=http://13.40.105.140:3002 npm run test:all",
+    "test:e2e:browser": "cd tests/e2e-browser && npm test",
+    "test:e2e:browser:headed": "cd tests/e2e-browser && npm run test:headed",
+    "test:e2e:full": "npm run test:e2e:api:aws && npm run test:e2e:browser"
+  },
+  "dependencies": {
+    "@noble/secp256k1": "^3.0.0",
+    "@tanstack/react-query": "^5.90.11",
+    "clsx": "^2.1.1",
+    "ethers": "^6.15.0",
+    "secp256k1": "^5.0.1",
+    "tailwind-merge": "^3.4.0",
+    "viem": "^2.40.3",
+    "wagmi": "^3.0.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6"
+  }
+}
